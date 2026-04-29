@@ -33,7 +33,7 @@ def check_clashes(entities):
 
 # --- UI LAYOUT ---
 st.set_page_config(page_title="AI Health Designer", layout="wide")
-st.title("?? AI Healthcare Concept Validator")
+st.title(" AI Healthcare Concept Validator")
 st.caption("IHFG Standard Procedure & AI Clash Detection Engine")
 
 tabs = st.tabs(["Upload & Analyze", "IHFG Database", "Export Report"])
