@@ -2,4 +2,3 @@ streamlit
 ezdxf
 shapely
 pandas
-sqlite3
