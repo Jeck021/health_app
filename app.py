@@ -1,3 +1,4 @@
+import io
 import streamlit as st
 import ezdxf
 from shapely.geometry import Polygon, LineString
@@ -50,7 +51,20 @@ with tabs[0]:
         if file:
             st.success("CAD Data Extracted Successfully")
             # Logic to parse DXF using ezdxf
-            doc = ezdxf.read(file)
+            if file:
+    # This converts the uploaded file into a compatible binary stream
+    stringio = io.BytesIO(file.getvalue()) 
+    
+    try:
+        # Load the DXF from the binary stream
+        doc = ezdxf.read(stringio)
+        msp = doc.modelspace()
+        st.success("CAD Data Extracted Successfully")
+        
+        # Now you can proceed with analysis...
+        
+    except ezdxf.DXFStructureError:
+        st.error("Invalid DXF file structure. Please save as a 'Standard DXF' in AutoCAD.")
             msp = doc.modelspace()
             
             st.subheader("2. AI Analysis Results")
